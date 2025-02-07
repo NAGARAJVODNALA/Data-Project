@@ -1,73 +1,76 @@
 # 🛒 Data-Project: Supermarket Transactions Analysis & Maze Navigation  
 
-## 📌 Project Overview  
-This project involves analyzing **supermarket transaction data** collected over **two years** to generate **valuable business insights**.  
-It consists of two main tasks:  
-
-1️⃣ **Supervised Learning for Business Insights** – Using Machine Learning to **predict sales**, assess **promotional impacts**, and classify **high-performing supermarkets**.  
-2️⃣ **Maze Navigation Model** – Implementing **Reinforcement Learning** to train an agent to **navigate a maze efficiently**.  
-
-The goal is to **clean, normalize, and transform** data into **Python-compatible formats** while leveraging **Machine Learning techniques** for predictive modeling.
+## 📌 Project Overview
+This project involves analyzing **supermarket transaction data** collected over **two years** to generate **valuable business insights**. The goal is to **clean, normalize, and transform** data into **Python-compatible formats** while leveraging **Machine Learning techniques** for predictive modeling. Additionally, a reinforcement learning approach is implemented for **maze navigation**.
 
 ---
 
-## 📊 Task 1: Supervised Learning for Business Insights  
+## 📊 Task 1: Supervised Learning for Business Insights
 
-### **📌 Data Sources**  
-The project uses **four datasets**:  
+### **📌 Data Sources**
+The project uses **four datasets**:
 
-- 📄 **Items.csv** – Product details (**code, type, brand, size**)  
-- 📄 **Sales.csv** – Sales transactions (**amount, units, time, customer ID, voucher**)  
-- 📄 **Promotion.csv** – Promotions applied to items (**week, display impact, feature**)  
-- 📄 **Supermarkets.csv** – Supermarket locations (**supermarket number, post-code**)  
+- 📄 **Items.csv** – Product details (**code, type, brand, size**)
+- 📄 **Sales.csv** – Sales transactions (**amount, units, time, customer ID, voucher**)
+- 📄 **Promotion.csv** – Promotions applied to items (**week, display impact, feature**)
+- 📄 **Supermarkets.csv** – Supermarket locations (**supermarket number, post-code**)
 
 ---
 
-### **✅ Data Cleaning & Transformation**  
+### **✅ Data Cleaning & Transformation**
 ✔ Removed **duplicates**  
 ✔ Standardized **column names** and formatted **data types**  
-✔ Merged datasets on **common keys** (`code`, `Supermarket_No`, `province`)  
+✔ Merged datasets on **common keys** (`code`, `supermarket`, `province`)  
 
 ---
 
-### **✅ Feature Engineering**  
+### **✅ Feature Engineering**
 ✔ Created new **features** to **capture sales patterns**  
-✔ Extracted **time-related insights** (`month`, `weekday`)  
+✔ Extracted **time-related insights** (`week`, `units`)  
 ✔ Mapped **promotional impact**  
 
 ---
 
-## **✅ Model Training & Evaluation**  
+## **✅ Model Training & Evaluation**
 
-### **1️⃣ Sales Forecasting (Regression Model)**  
+### **1️⃣ Sales Forecasting (Neural Network Model)**
 **🔹 Problem Statement:** Predict sales based on **promotions, store location, and product features**.  
-**🔹 Algorithm Used:** RandomForestRegressor  
+**🔹 Algorithm Used:** MLP Regressor (Neural Network)  
 **🔹 Features Used:**  
 - 🏷 **Product-related:** `code`, `brand`, `type`  
-- 🏬 **Store-related:** `Supermarket_No`  
-- 🕒 **Time-related:** `Month`, `Weekday`  
-- 🎟 **Promotion-related:** `Promotion Active`  
-**🔹 Evaluation Metric:** **RMSE (Root Mean Squared Error)**  
-- Achieved a strong **RMSE score**, indicating accurate predictions  
+- 🏬 **Store-related:** `supermarket`  
+- 🕒 **Time-related:** `week`, `units`  
+- 🎟 **Promotion-related:** `promotion active`, `display impact`  
+**🔹 Evaluation Metric:** **RMSE (Root Mean Squared Error) and R² Score**  
+- **RMSE:** 0.1664 (lower is better)  
+- **R² Score:** 0.7555 (explains 75.55% of variance in sales data)  
 
 ---
 
-### **2️⃣ Supermarket Performance Classification (Classification Model)**  
-**🔹 Problem Statement:** Classify supermarkets into **high-performing (1) and low-performing (0)**.  
-**🔹 Algorithm Used:** RandomForestClassifier  
-**🔹 Features Used:**  
-- 📅 `Month`, `Weekday`  
-- 🏷 `code`, `Promotion Active`, `Display Impact`  
-**🔹 Evaluation Metric:** **Accuracy Score**  
-- The model achieved **high accuracy**, confirming the importance of key features  
-
----
-
-### **📈 Business Insights**  
+### **📈 Business Insights**
 ✔ **📊 Promotion Impact:** Sales were significantly **higher when promotions were active**  
-✔ **🛒 Weekend Sales Surge:** Transactions **peaked on weekends**  
-✔ **🏬 High-Performing Stores:** Certain supermarkets **outperformed others due to location & promotions**  
-✔ **💰 Customer Segmentation:** High spenders **contributed disproportionately to sales**  
+✔ **🛒 Weekly Sales Trends:** Sales **fluctuate over weeks**, peaking during certain periods  
+✔ **🏬 High-Performing Stores:** Certain supermarkets **outperform others due to location & promotions**  
+✔ **💰 Customer Segmentation:** High spenders **contribute disproportionately to sales**  
+
+---
+
+## **📊 Business Recommendations**
+
+### **1. Optimize Promotional Strategies**
+- Focus on **Type 2 items** and **top-selling brands** for marketing campaigns.  
+- Use **A/B testing** to determine the most effective promotional techniques.  
+- Increase targeted promotions on items with higher demand elasticity.  
+
+### **2. Improve Demand Forecasting**
+- Leverage sales predictions for **inventory planning** and **supply chain adjustments**.  
+- Plan promotional events based on predicted high-demand weeks.  
+- Implement real-time tracking to adjust stock levels dynamically.  
+
+### **3. Enhance Model Performance**
+- Incorporate **additional features** (e.g., customer demographics, seasonal trends, external factors).  
+- Implement **hyperparameter tuning** for the neural network to improve predictive power.  
+- Experiment with **alternative machine learning models** such as XGBoost or ensemble methods for improved accuracy.  
 
 ---
 
@@ -107,7 +110,7 @@ Design a **reinforcement learning model** where an agent **learns to navigate** 
 ---
 
 ## 📝 Report  
-A **full project report**, including **detailed documentation, insights, and performance analysis**, is available in the files.
+A **full project report**, including **detailed documentation, insights, and performance analysis**, is available in the files.  
 
 ---
 
